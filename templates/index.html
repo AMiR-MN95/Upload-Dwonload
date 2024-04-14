@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Sharing App</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<h1>Welcome to the File Sharing App</h1>
+
+{{ if .files }}
+<h2>Available Files:</h2>
+<ul>
+    {{ range .files }}
+    <li><a href="/user/download/{{ . }}" download>{{ . }}</a></li>
+    {{ end }}
+</ul>
+{{ else }}
+<p>No files available.</p>
+{{ end }}
+
+<p><a href="/admin/upload">Admin Upload Page</a></p>
+</body>
+</html>

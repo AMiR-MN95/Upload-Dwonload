@@ -2,23 +2,16 @@ package main
 
 import (
 	"Upload-Dwonload/handlers"
-	"log"
-	"net/http"
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
-	// Initialize your database connection here
-	// Example: db.Init()
+	router := gin.Default()
 
-	// Set up middleware if needed
-	// Example: router.Use(myMiddleware)
-
-	// Initialize your handlers
-	handlers.Init()
+	// Set up routes and handlers
+	handlers.AdminInit(router)
+	handlers.UserInit(router)
 
 	// Run the server
-	err := http.ListenAndServe(":8080", nil)
-	if err != nil {
-		log.Fatalf("Error starting server: %v", err)
-	}
+	router.Run(":8080")
 }
